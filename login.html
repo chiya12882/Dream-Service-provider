@@ -1,3 +1,4 @@
+<%@page import="Dao.Dao"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +14,11 @@
 </head>
 <style>
   .background{
-  background-image: url("login4.jpg");
+  background-image: url("images/login4.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center ;
-  margin: -1%;
+  margin: 0%;
   padding: 100px;
   height: 100vh;
   width: 100%;
@@ -89,31 +90,27 @@
       
       
         
-        <form  class ="container" action="user.html" style=" padding: 10px 60px; border-radius: 30px; position: absolute; top: 15vh; color:rgb(225, 248, 220);box-shadow:1px 4px 26px 11px rgba(0, 0, 0, 0.75)">
+        <form  class ="container" action="login.jsp" style=" padding: 10px 60px; border-radius: 30px; position: absolute; top: 15vh; color:rgb(225, 248, 220);box-shadow:1px 4px 26px 11px rgba(0, 0, 0, 0.75)">
               <h1><center>Login</center></h1>
           
             <div class="form-group">
               <label for="user"><b>&nbsp;&nbsp;&nbsp;Username</b></label>
-              <input type="email" class="form-control" id="User" placeholder="Username">
+              <input type="text" class="form-control" name="username" placeholder="Username">
             </div>
             <div class="form-group">
               <label for="password"><b>&nbsp;&nbsp;&nbsp;Password</b></label>
-              <input type="password" class="form-control" id="password" placeholder="Password">
+              <input type="password" class="form-control" name="pass" placeholder="Password">
             </div>
             
-            <div class="custom-control custom-radio custom-control-inline">
-                       <b> Login as </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="custom-control-input" id="us" name="us">
-      <label class="custom-control-label" for="user">User</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="custom-control-input" id="service" name="us">
-      <label class="custom-control-label" for="service"> Service provider</label>
-    </div>
+            Login As:<br><input type="radio" id="user" name="login" value="1">
+<label for="user">User</label><br>
+<input type="radio" id="service" name="login" value="2">
+<label for="css">Service Provider</label><br>
           
             
             
             <button type="submit" class="btn btn-block btn-success">Submit</button><br>
-      <p style="text-align:right">New User? <a href="registration.html" style="color: rgb(17, 252, 56);" >Signup </a></style>
+      <p style="text-align:right">New User? <a href="signup.jsp" style="color: rgb(17, 252, 56);" >Signup </a></style>
 
           </form>
       </div>
@@ -165,3 +162,30 @@
 </div>
 </body> 
 </html>
+
+<% 
+    String user=null,pass=null,login=null;
+    user=request.getParameter("username");
+    pass=request.getParameter("pass");
+    login=request.getParameter("login");
+    String myRadio= request.getParameter("login");
+    if(user!=null && pass!=null)
+    {
+         Dao sd=new Dao();
+         if(sd.checkLogin(user, pass))
+         {
+             if ("1".equals(myRadio)) {
+       response.sendRedirect("index.html");
+}
+             else
+                 response.sendRedirect("signup.jsp");
+             session.setAttribute("user", user);
+             session.setAttribute("pass", pass);
+         }  
+         else
+             out.println("<font color=red size=4>invalid user name or password</font>");
+                 
+         
+                 
+    }    
+%>
