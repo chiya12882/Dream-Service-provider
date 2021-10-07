@@ -47,11 +47,11 @@
     display: block;
 }
  .sidebar ul li:hover{
-    background: #635994;
+    background: blanchedalmond;
     padding-left: 30px;   
 }
  .sidebar ul li:hover a{
-    color: #fff;
+    color: black;
 }
  .sidebar .social_media{
     position: absolute;
