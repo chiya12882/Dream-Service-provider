@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
  
-<title>Booking page</title>
+<title>Booking Service</title>
 <link rel="stylesheet" href="us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,30 +16,25 @@
 <body  >
   <div class=" wrapper">
     <div class="container-fluid ">
-      <div class="header"><b>Customer</b></div>
+      <div class="header"><b>BOOK SERVICE</b></div>
     </div>
   <div class="row no-gutters" >
       
       <div class="col-md-2 mx-auto side-col">
           
           <div class="sidebar">
-        
-              <h2>List</h2>
-              <ul>
-                <li><a href="userlogin.html"> <i class="fa fa-home" style="font-size:30px"></i> &nbsp;Home</a></li>
-                      <li><a href="bookservice.html"><i class="fa fa-bookmark" style="font-size:28px"></i>&nbsp;Book Service</a></li>
-                      <li><a href="booking.html"><i class="fa fa-history" style="font-size:25px"></i>&nbsp;Booking History</a></li>
-                     
-                      <li><a href="contact.html"><i class="fa fa-phone" style="font-size:30px"></i>&nbsp;Contact</a></li>
-                      <li><a href="login.html"><i class="fa fa-sign-out" style="font-size:27px"></i>&nbsp;Logout</a></li>
+            <br><br><br>
+            <ul>
+              <li><a href="userhome.html"> <i class="fa fa-home" style="font-size:20px"> &nbsp;&nbsp;Home</i></a></li>
+                    <li><a href="bookservice.html"><i class="fa fa-bookmark" style="font-size:20px">&nbsp;&nbsp;Book Service</i></a></li>
+                    <li><a href="booking.html"><i class="fa fa-history" style="font-size:20px">&nbsp;&nbsp;Booking History</i></a></li>
+                    <li><a href="contact.html"><i class="fa fa-phone" style="font-size:20px">&nbsp;&nbsp;Contact</i></a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i></a></li>
               </ul>
-              <div class=" social_media">
-               
-                    book
-              </div>
+            
           </div>
       </div>
-      <div class="col-md-10"style="background-image: url('user.png'); background-repeat: no-repeat; width: 100%; height: 800px; background-size: 100%;">
+      <div class="col-md-10"style="background-image: url('image1.jfif'); background-repeat: no-repeat; width: 100%; height: 800px; background-size: 100%;">
        
           
         <div class="main_content">
@@ -51,15 +46,15 @@
       <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-10"></div>
       <div class="col-md-4 col-sm-4 col-xs-10">            
-            <form action="user.html" style=" padding: 10px 60px; margin-top: 100px; margin-bottom: 60px; color:rgb(14, 30, 63);
+            <form action="user.html" style=" padding: 10px 60px; margin-top: 60px; margin-bottom: 60px; color:rgb(14, 30, 63);
                   box-shadow:1px 4px 26px 11px rgba(0, 0, 0, 0.75)">
-                  <h1><center>Book Service</center></h1>
+                  <h2><center>Book Service</center></h2><br>
               
                 <div class="form-group">
-                  <label for="user"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;<b>Mobile No</b></label>
-                  <input type="text" class="form-control" id="mobile" placeholder="eneter 10 digit no">
+                  <label for="user"><span class="glyphicon glyphicon-user"></span><b>Mobile No</b></label>
+                  <input type="text" class="form-control" id="mobile" placeholder="Enter 10 digit no"  pattern="[789][0-9]{9}">
                 </div>
-                <label for="service"> <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;<b>Select Service</b></label>
+                <label for="service"><span class="glyphicon glyphicon-list-alt"></span><b>Select Service</b></label>
           <select name="service" id="service" class="form-control">
             <option >Select Service</option>
             <option >Car Washing</option>
@@ -78,10 +73,10 @@
                   <textarea class="form-control" rows="5" id="description"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="budget"><span class="glyphicon glyphicon-lock"></span><b>&nbsp;&nbsp;&nbsp;Budget</b></label>
-                  <input type="text" class="form-control" id="text" placeholder="budget">
+                  <label for="budget"><span class="glyphicon glyphicon-lock"></span><b>Budget</b></label>
+                  <input type="text" class="form-control" id="text" placeholder="Budget">
                 </div>
-                <button type="submit" class="btn btn-block btn-danger">Book Service</button><br>
+                <button type="submit" class="btn btn-block btn-danger" style="background-color:#032255; border:rgb(14, 30, 63)">Book Service</button><br>
               </form>
           </div>
         
@@ -111,7 +106,7 @@
             <h1 class="text-center " style="color: blanchedalmond; text-align: center;font-size: 30px; "> Quick Links<br>
                 <small> <ul class="navbar-nav ">
                 <li class="nav-item ">
-                  <a class="nav-link " href="index.html "  style="color: white; "> <i class="fa fa-home " style="font-size:20px "></i> &nbsp;Home</a>
+                  <a class="nav-link " href="Home.html "  style="color: white; "> <i class="fa fa-home " style="font-size:20px "></i> &nbsp;Home</a>
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link " href="about.html " style="color: white; "><i class="fa fa-info-circle " style="font-size:20px "></i>&nbsp;About</a>
