@@ -1,9 +1,15 @@
+<%@page import="java.util.List"%>
+<%@page import="Model.Service"%>
+<%@page import="Dao.Dao"%>
+<%! 
+  int bid;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
 <title>Booking Service</title>
-<link rel="stylesheet" href="us.css">
+<link rel="stylesheet" href="css/us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,7 +40,7 @@
             
           </div>
       </div>
-      <div class="col-md-10"style="background-image: url('image-asset.jpeg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
+      <div class="col-md-10"style="background-image: url('images/image-asset.jpeg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
        
           
         <div class="main_content">
@@ -46,35 +52,51 @@
       <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-10"></div>
       <div class="col-md-4 col-sm-4 col-xs-10">            
-            <form action="user.html" style=" padding: 10px 60px; margin-top: 40px; margin-bottom: 60px; color:rgb(14, 30, 63);
+            <form action="bookservice2.jsp" style=" padding: 10px 60px; margin-top: 40px; margin-bottom: 60px; color:rgb(14, 30, 63);
                   box-shadow:1px 4px 26px 11px rgba(0, 0, 0, 0.75)">
                   <h2><center>Book Service</center></h2><br>
-              
+              <div class="form-group">
+                  <label for="user_id"><span class="glyphicon glyphicon-user"></span><b>User Id</b></label>
+                  <% 
+                        Dao bd=new Dao();
+                        
+                        bid=bd.autoIncr();
+                      %> 
+                  <input type="text" class="form-control" name="user_id"value=<%=bid%> readonly >
+                </div>
                 <div class="form-group">
-                  <label for="user"><span class="glyphicon glyphicon-user"></span><b>Mobile No</b></label>
-                  <input type="text" class="form-control" id="mobile" placeholder="Enter 10 digit no"  pattern="[789][0-9]{9}">
+                  <label for="mobile"><span class="glyphicon glyphicon-user"></span><b>Mobile No</b></label>
+                  <input type="text" class="form-control" name="phoneno" placeholder="Enter 10 digit no"  pattern="[789][0-9]{9}">
                 </div>
                 <label for="service"><span class="glyphicon glyphicon-list-alt"></span><b>Select Service</b></label>
-          <select name="service" id="service" class="form-control">
+          <select id="service" name="service_id" class="form-control">
             <option >Select Service</option>
-            <option >Car Washing</option>
-            <option >Gardening</option>
-            <option >Home Paint</option>
-            <option >House Cleaning</option>
-            <option >Laundary</option>
-            <option >Lawn Mowing</option>
-            <option >Plumbing</option>
-            <option >Pest Control</option>
+             <%
+                    Dao d = new Dao();
+                    List <Service> ls= d.getAllServices();
+                    for(Service c : ls ){
+                        
+                    
+                    
+                    %>
+                     <option value= "<%= c.getId() %>"><%= c.getService()%></option>
+        <%
+            }         
+%>      
           </select><br>
                
                 
                 <div class="form-group">
                   <label for="description"><b>Description</b></label>
-                  <textarea class="form-control" rows="5" id="description"></textarea>
+                  <textarea class="form-control" rows="5" name="description" placeholder="Description"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="budget"><span class="glyphicon glyphicon-lock"></span><b>Budget</b></label>
-                  <input type="text" class="form-control" id="text" placeholder="Budget">
+                  <input type="text" class="form-control" name="budget" placeholder="Budget">
+                </div>
+           <div class="form-group">
+                  <label for="date"><span class="glyphicon glyphicon-lock"></span><b>Booking Date</b></label>
+                  <input type="date" class="form-control" name="booking_date" >
                 </div>
                 <button type="submit" class="btn btn-block btn-danger" style="background-color:#032255; border:rgb(14, 30, 63)">Book Service</button><br>
               </form>
