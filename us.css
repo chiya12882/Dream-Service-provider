@@ -12,7 +12,7 @@
     padding: 20px;
     background: #032255;
     color: #f8f6f6;
-    border-bottom: 1px solid #032255;
+    border-bottom: 1px solid #f6f7f8;
     font-size: 30px;
     text-align: center;
     margin-left: -2%;
@@ -103,6 +103,7 @@
     border-top: 1px solid #0faf32;
 } */
 .footer {
+    border-top: 1px solid #f6f7f8;
     background-color: #032255;
     color: white;
     font-size: 20px;
