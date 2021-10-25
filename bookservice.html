@@ -1,15 +1,15 @@
-<%@page import="java.util.List"%>
+<!-- <%@page import="java.util.List"%>
 <%@page import="Model.Service"%>
 <%@page import="Dao.Dao"%>
 <%! 
   int bid;
-%>
+%> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
 <title>Booking Service</title>
-<link rel="stylesheet" href="css/us.css">
+<link rel="stylesheet" href="us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,7 +42,7 @@
             
           </div>
       </div>
-      <div class="col-md-10"style="background-image: url('images/service.jpg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
+      <div class="col-md-10"style="background-image: url('service.jpg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
        
           
         <div class="main_content">
@@ -59,11 +59,11 @@
                   <h2><center>Book Service</center></h2><br>
               <div class="form-group">
                   <label for="user_id"><span class="glyphicon glyphicon-user"></span><b>User Id</b></label>
-                  <% 
+                  <!-- <% 
                         Dao bd=new Dao();
                         
                         bid=bd.autoIncr();
-                      %> 
+                      %>  -->
                   <input type="text" class="form-control" name="user_id"value=<%=bid%> readonly >
                 </div>
                 <div class="form-group">
@@ -73,18 +73,18 @@
                 <label for="service"><span class="glyphicon glyphicon-list-alt"></span><b>Select Service</b></label>
           <select id="service" name="service_id" class="form-control">
             <option >Select Service</option>
-             <%
+             <!-- <%
                     Dao d = new Dao();
                     List <Service> ls= d.getAllServices();
                     for(Service c : ls ){
                         
                     
                     
-                    %>
+                    %> -->
                      <option value= "<%= c.getId() %>"><%= c.getService()%></option>
-        <%
+        <!-- <%
             }         
-%>      
+%>       -->
           </select><br>
                
                 
