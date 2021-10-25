@@ -7,7 +7,7 @@
 <html>
 <head>
  
-<title>Customer</title>
+<title>User Profile</title>
 <link rel="stylesheet" href="css/us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,10 @@
 </head>
 <body>
   <div class="container-fluid ">
-    <div class="header"><b>YOUR PROFILE</b></div>
+    <div class="header"><b>YOUR PROFILE</b>
+      <p style="font-size:20px; margin-left:1000px; margin-bottom:-15px">ID:</p>
+    </div>
+
   </div>
 <div class="row no-gutters" >
     
@@ -38,12 +41,12 @@
             </ul>
         </div>
     </div>
-      <div class="col-md-10"style="background-image: url('images/image-asset.jpeg'); background-possition: center;  background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%; ">
+      <div class="col-md-10"style="background-image: url('images/service.jpg'); background-possition: center;  background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%; ">
         <div class="main_content">
          
           <div class="info">
             <br>
-            <strong>      <center>     <h1>Welcome!</h1>
+            <strong>     <center>    <strong> <p style="font-size:40px; color:navy">Welcome!</p></strong></center>
                     <% 
            String sbid;
            HttpSession sess = request.getSession(false); //use false to use the existing session
@@ -60,13 +63,13 @@
                {
                %>
               <br>
-               <p style="font-size:30px;">Id: <%=S.getId()%></p>
-    <p style="font-size:30px;">Name: <%=S.getName()%></p>
-    <p style="font-size:30px">Address:  <%=S.getAdd()%></p>
-      <p style="font-size:30px">City: <%=S.getCity()%></p>
-        <p style="font-size:30px">State: <%=S.getState()%></p>
-          <p style="font-size:30px">Email: <%=S.getEmail()%></p>
-            <p style="font-size:30px; ">Contact: <%=S.getPhoneno()%></p></strong>
+               <p style="font-size:30px; margin-left:350px; color:navy">Id: <%=S.getId()%></p>
+    <p style="font-size:30px; margin-left:350px; color:navy">Name: <%=S.getName()%></p>
+    <p style="font-size:30px; margin-left:350px; color:navy">Address:  <%=S.getAdd()%></p>
+      <p style="font-size:30px; margin-left:350px; color:navy">City: <%=S.getCity()%></p>
+        <p style="font-size:30px; margin-left:350px; color:navy">State: <%=S.getState()%></p>
+          <p style="font-size:30px; margin-left:350px; color:navy">Email: <%=S.getEmail()%></p>
+            <p style="font-size:30px; margin-left:350px; color:navy">Contact: <%=S.getPhoneno()%></p></strong>
       </center>
               <%   
                }     

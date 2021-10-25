@@ -15,7 +15,9 @@
 </head>
 <body>
   <div class="container-fluid ">
-    <div class="header"><b>SERVICE PROVIDER</b></div>
+    <div class="header"><b>SERVICE PROVIDER</b>
+      <p style="font-size:20px; margin-left:1000px; margin-bottom:-15px">ID:</p>
+    </div>
   </div>
 <div class="row no-gutters" >
     
@@ -39,10 +41,21 @@
       <div class="main_content">
        
         <div class="info">
-          <h1 style="font-size: 100px; margin-top: 100px; margin-left:200px; margin-right: 50px;"><strong>WELCOME!</strong></h1><br><br>
-          <h2 style="font-size: 20px; margin-left:50px; margin-right: 50px; color:rgb(6, 42, 97)"><center><strong>Thank you for logging to the website. We are greatful to have you as our member. As a service provider we hope that you will provide better and convenient services to the customer and here we wish that you have a great journey ahead with us.</strong></center></h2>
-            <!-- <h2 style="color: black; font-weight:900; font-family: Cambria, 
-            Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; padding-top: 50px;"> RECORDS </h2> -->
+          <!-- <h1 style="font-size: 100px; margin-top: 100px; margin-left:200px; margin-right: 50px;"><strong>WELCOME!</strong></h1><br><br> -->
+          <!-- <h2 style="font-size: 20px; margin-left:50px; margin-right: 50px; color:rgb(6, 42, 97)"><center><strong>Thank you for logging to the website. We are greatful to have you as our member. As a service provider we hope that you will provide better and convenient services to the customer and here we wish that you have a great journey ahead with us.</strong></center></h2> -->
+          <br>
+          <strong>      <center>    <strong> <p style="font-size:40px; color:navy">Welcome!</p></strong></center>
+            <br>
+             <p style="font-size:25px; margin-left:350px; color:navy">Id: <%=S.getId()%></p>
+  <p style="font-size:25px; margin-left:350px;color:navy">Name: <%=S.getName()%></p>
+  <p style="font-size:25px; margin-left:350px;color:navy">Address:  <%=S.getAdd()%></p>
+    <p style="font-size:25px; margin-left:350px;color:navy">City: <%=S.getCity()%></p>
+      <p style="font-size:25px; margin-left:350px;color:navy">State: <%=S.getState()%></p>
+        <p style="font-size:25px; margin-left:350px;color:navy">Email: <%=S.getEmail()%></p>
+          <p style="font-size:25px; margin-left:350px; color:navy">Contact: <%=S.getPhoneno()%></p></strong>
+       
+</div>
+</div>
 
   </div>
 </div>
