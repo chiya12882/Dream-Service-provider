@@ -24,14 +24,12 @@
     .navbar {
         margin-bottom: 0;
         border-radius: 0;
-        height: 90px;
-        font-size: 30px;
+        height: 50px;
+        font-size: 20px;
         font-weight:bold;
         font: white;
         
       }
-      
-      
       
       .footer {
         background-color: #1f375e;
@@ -42,20 +40,19 @@
         
     }
     .background{
-  background-image: url("images/regis2.jpg");
+  background-image: url("login.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment:scroll;
-  height: 100%;
-  
+  height: 1400px;
 }
 
 
     
     </style>
      </head>
-     <body style="background-image: url(login.jpg); background-repeat: no-repeat; background-size: 100%; ">
+     <body>
 
 
 
@@ -82,7 +79,7 @@
                       <a class="nav-link " href="login.html "><i class="fa fa-sign-in " style="font-size:20px "></i>&nbsp; <span class="highlight" ">login</span></a></li>
               </ul>
           </div>
-          <a class="navbar-brand " href="# " style="font-size: 33px; font-style: italic; ">SERVICE PROVIDER </a>
+          <a class="navbar-brand " href="# " style="font-size: 33px; font-style: italic;">SERVICE PROVIDER </a>
       </nav>
 
       
@@ -90,15 +87,15 @@
    
   <div class="background">
     <div class="row">
-      <div class="col-md-5 col-sm-5 col-xs-12">
+  
        
-        <form action="signup2.jsp" style="border-radius: 10px; padding: 10px 50px; margin-top: 140px; margin-left: 50px;margin-right:50px;margin-bottom: 60px ;color:rgb(22, 36, 19);
+        <form action="signup2.jsp" style="border-radius: 10px; padding: 10px 50px; margin-top: 140px; margin-left: 500px;margin-right:50px;margin-bottom: 60px ;color:rgb(22, 36, 19);
               box-shadow:1px 4px 26px 11px rgba(0, 0, 0, 0.75)">
               
               <h1><center>Login</center></h1>
               <div class="form-group">
-                <label for="user"><b>&nbsp;&nbsp;&nbsp;full name</b></label>
-                <input type="text" class="form-control" name="full name" placeholder="full name">
+                <label for="user">&nbsp;&nbsp;&nbsp;Full Name</label>
+                <input type="text" class="form-control" name="full name" placeholder="Full Name">
             </div>
             <div class="form-group">
              
@@ -155,8 +152,8 @@
         <input type="text" class="form-control" name="username" placeholder="Username">
       </div>
               <div class="form-group">
-                <label for="password"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;password</label>
-                <input type="text" class="form-control" name="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                <label for="password"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Password</label>
+                <input type="text" class="form-control" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
                 </div>
       
@@ -164,12 +161,12 @@
                 <label for="add"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;&nbsp;Address</label>
                 <input type="text" class="form-control" name="add" placeholder="Address">
               </div>
-                </select><br>
+                </select>
                 <div class="form-group">
-                  <label for="city">State</label>
+                  <label for="city">&nbsp;&nbsp;&nbsp;State</label>
                  
                   <select id="state" name="state" class="form-control" id="exampleFormControlSelect" >
-                 <option>select State</option>
+                 <option>Select State</option>
                 <%
                     Dao dao = new Dao();
                     List <State> st= d.getAllState();
@@ -186,10 +183,10 @@
                 </select><br>
       
                 <div class="form-group">
-                  <label for="city">City</label>
+                  <label for="city">&nbsp;&nbsp;&nbsp;City</label>
                  
                   <select id="city" name="city" class="form-control" id="exampleFormControlSelect" >
-                    <option>Select city</option>
+                    <option>Select City</option>
                      <%
                     Dao da = new Dao();
                     List <City> cit= d.getAllCities();
@@ -213,16 +210,12 @@
               </div>
               
               
-              <button type="submit" class="btn btn-block btn-success">Submit</button><br>
-        <p style="text-align:right">already user? <a href="login.html" style="color: rgb(22, 165, 46);" >go to signin </a></style>
+              <button type="submit" class="btn btn-block btn-success" style="background-color: #1f375e;">Submit</button><br>
+        <p style="text-align:right">Already User? <a href="login.html" style="color: #1f375e;" >Signin </a></p>
       
               </form>
       
       </div>
-     
-     
-        <div class="col-md-6 col-sm-6 col-xs-12"></div>
-  </div>
   </div>
 
   <div class="footer ">
@@ -253,10 +246,10 @@ another party.</small></h1>
       </div>
         <div class="col-sm-4 mx-auto text-center mt-3 mb-3 ">
             <h1 class="text-center " style="color: blanchedalmond; text-align: left; font-size: 30px; "> Contact<br>
-                <small style="color: white; ">  <i class="fa fa-envelope " style="font-size:30px "></i>&nbsp; serviceprovider@gmail.com<br>
+                <small style="color: white; ">  <i class="fa fa-envelope " style="font-size:20px "></i>&nbsp; serviceprovider@gmail.com<br>
     
-     <i class="fa fa-phone " style="font-size:30px "></i>&nbsp;&nbsp; +91-9826787656<br>
-     <i class="fa fa-map-marker " style="font-size:30px "></i>&nbsp; Indore Madhya Pradesh, India<br></small></h1>
+     <i class="fa fa-phone " style="font-size:20px "></i>&nbsp;&nbsp; +91-9826787656<br>
+     <i class="fa fa-map-marker " style="font-size:20px "></i>&nbsp; Indore Madhya Pradesh, India<br></small></h1>
         </div>
     </div>
 </div>
