@@ -1,16 +1,12 @@
-<%@page import="java.util.List"%>
-<%@page import="Model.User"%>
-<%@page import="Model.booking"%>
 <%@page import="Dao.Dao"%>
-<%!
+<%@page import="Model.User"%>
+<%@page import="java.util.List"%>
 
- User S=null;
- %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
-<title>Booking History</title>
+<title>Accepted Requests</title>
 <link rel="stylesheet" href="css/us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,25 +21,9 @@
 <body>
   <div class=" wrapper">
     <div class="container-fluid ">
-      <div class="header"><b>BOOKING HISTORY</b>
-            <% 
-           String sbid;
-           HttpSession sess = request.getSession(false); //use false to use the existing session
-            sbid=(String)sess.getAttribute("user");
-           //sbid=request.getParameter("txtUname");
-           if(sbid!=null)
-           {
-                 
-                 Dao sd=new Dao();
-                 S=sd.searchByUser(sbid);
-                 if(S==null)
-                   out.println("<font color=red size=6 >Record not found........</font>");
-                else
-               {
-                 int id = S.getId();  
-               %>
-               
-               <p style="font-size:20px; margin-left:1300px; margin-bottom:-15px">ID:<%out.print(id); %> </p> 
+      <div class="header"><b>SERVICE PROVIDERS</b>
+          
+       
       </div>
     </div>
   <div class="row no-gutters" >
@@ -51,93 +31,87 @@
       <div class="col-md-2 mx-auto side-col">
           
           <div class="sidebar">
-            <br><br><br>
-            <ul>
-              <li><a href="userhome.html"> <i class="fa fa-home" style="font-size:20px"> &nbsp;&nbsp;Home</i></a></li>
-                    <li><a href="bookservice.html"><i class="fa fa-bookmark" style="font-size:20px">&nbsp;&nbsp;Book Service</i></a></li>
-                    <li><a href="booking.html"><i class="fa fa-history" style="font-size:20px">&nbsp;&nbsp;Booking History</i></a></li>
-                    <li><a href="contact.html"><i class="fa fa-phone" style="font-size:20px">&nbsp;&nbsp;Contact</i></a></li>
-                    <li><a href="index.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i></a></li>
-            </ul>
-            
+        
+           <br>
+              <ul>
+                <li><a href="adminHome.jsp"> <i class="fa fa-home" style="font-size:20px">&nbsp;Home</i></a></li>
+                <li><a href="allusers.jsp"><i class="fa fa-bookmark" style="font-size:20px">&nbsp;Users</i></a></li>
+                <li><a href="allproviders.jsp"><i class="fa fa-history" style="font-size:20px">&nbsp;Service Providers</i></a></li>
+                <li><a href="allrequest.jsp"><i class="fa fa-phone" style="font-size:20px">&nbsp;All Requests</i></a></li>
+                <li><a href="acceptRequest2.jsp"><i class="fa fa-check-square-o" style="font-size:20px;">&nbsp;Accepted Requests</i></a></li>
+               <li><a href="pendingRequest2.jsp"><i class="fa fa-eye-slash" style="font-size:20px">&nbsp;Pending Requests</i></a></li>
+                <li><a href="contact.html"><i class="fa fa-phone" style="font-size:20px">&nbsp;Contact</i></a></li>
+                <li><a href="index.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;Logout</i></a></li>
+              </ul>
           </div>
       </div>
+      <div class="col-md-10"style="background-image: url('images/service.jpg'); background-possition: center; background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%;">
+        <div class="main_content">
+            <div class="info">
+          
+            <!-- <h2 style="color: black; font-weight:900; font-family: Cambria, 
+            Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; padding-top: 50px;"> RECORDS </h2> -->
+   <div class="container">
+    <div class="table-responsive" style="padding-top: 100px;">
+   <table class="table table-hover table-bordered table-striped jumbotron" style="background-color: transparent;" >
      
-  <div class="col-md-10"style="background-image: url('images/image-asset.jpeg'); background-possition: center; background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%;">
-    <div class="main_content">
-     
-      <div class="info">
-<div class="container">
-  <div class="table-responsive" style="padding-top: 100px;">
- <table class="table table-hover table-bordered table-striped jumbotron" style="background-color: transparent;" >
-   
-  <thead>
-    <tr>
+    <thead>
+      <tr>
+          
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone No</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Join Date</th>
+        
+      </tr>
+    </thead>
+     <%
       
-      <th>User Id</th>
-      <th>User Name</th>
-      <th>Phone Number</th>
-      <th>Service</th>
-      <th>Description</th>
-      <th>Budget</th>
-      <th>Booking Date</th>
-       <th>Address</th>
-      <th>City</th>
-      <th>Status</th>
-
-    </tr>
-  </thead>
-   
-  <tbody>
-      <%
-     
-                  
-                   List <booking> us = sd.searchByuser_id(id);
-                    for(booking c : us ){
+           String sbid;
+           
+                 
+                 Dao sd=new Dao();
+                
+                
+                 
+               
+                  int provider=1;
+                   List <User> us = sd.searchAllUser(provider);
+                    for(User c : us ){
                         
               %>
-    <tr  style="padding: 23px;">
-      
-      
-      <td><%=c.getUser_id() %></td>
+    <tbody>
+      <tr>
+          <td><%=c.getId() %></td>
+         
       <td><%=c.getName() %></td>
+       <td><%=c.getEmail()%></td>
       <td><%=c.getPhoneno() %></td>
-      <td><%=c.getService_id() %></td>
-      <td><%=c.getDescription() %></td>
-      <td><%=c.getBudget() %></td>
-       <td><%=c.getBooking_date() %></td>
       <td><%=c.getAdd() %></td>
-      <td><%=c.getCity() %></td>
-      <td><%=c.getStatus() %></td>
+      <td><%=c.getCityname()%></td>
+       <td><%=c.getJoin_date()%></td>
       
-
-    </tr>
-    <%   
-               }     
-           }
-           }
-   %>      
-  </tbody>
-
-</table>
-        
+      
+      </tr>
+      <%   }
+                    
+           
+           
+   %>    
+    </tbody>
+  
+  </table>
 </div>
- </div>
- <br><br><br><br><br><br><br><br><br>
- <div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#" class="active">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
+   </div>
+       
+          
+      </div>
     </div>
-  </div>
-</div>
-</div>
+    </div>
+
   <div class="footer " style="width: 100%;">
 
     <div class="row ">
@@ -173,6 +147,7 @@
         </div>
     </div>
   </div>
+  
   </body> 
   </html>
   

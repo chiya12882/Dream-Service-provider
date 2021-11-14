@@ -1,15 +1,18 @@
-<!-- <%@page import="java.util.List"%>
+
+<%@page import="Model.User"%>
+<%@page import="Model.City"%>
+<%@page import="java.util.List"%>
 <%@page import="Model.Service"%>
 <%@page import="Dao.Dao"%>
 <%! 
-  int bid;
-%> -->
+ User S=null;
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
 <title>Booking Service</title>
-<link rel="stylesheet" href="us.css">
+<link rel="stylesheet" href="css/us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,9 +25,7 @@
 <body  >
   <div class=" wrapper">
     <div class="container-fluid ">
-      <div class="header"><b>BOOK SERVICE</b>
-        <p style="font-size:20px; margin-left:1000px; margin-bottom:-15px">ID:</p>
-      </div>
+      <div class="header"><b>BOOK SERVICE</b></div>
     </div>
   <div class="row no-gutters" >
       
@@ -33,16 +34,16 @@
           <div class="sidebar">
             <br><br><br>
             <ul>
-              <li><a href="userhome.html"> <i class="fa fa-home" style="font-size:20px"> &nbsp;&nbsp;Home</i></a></li>
-                    <li><a href="bookservice.html"><i class="fa fa-bookmark" style="font-size:20px">&nbsp;&nbsp;Book Service</i></a></li>
-                    <li><a href="booking.html"><i class="fa fa-history" style="font-size:20px">&nbsp;&nbsp;Booking History</i></a></li>
+              <li><a href="userHome.jsp"> <i class="fa fa-home" style="font-size:20px"> &nbsp;&nbsp;Home</i></a></li>
+                    <li><a href="bookservice.jsp"><i class="fa fa-bookmark" style="font-size:20px">&nbsp;&nbsp;Book Service</i></a></li>
+                    <li><a href="bookinghistory.jsp"><i class="fa fa-history" style="font-size:20px">&nbsp;&nbsp;Booking History</i></a></li>
                     <li><a href="contact.html"><i class="fa fa-phone" style="font-size:20px">&nbsp;&nbsp;Contact</i></a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i></a></li>
+                    <li><a href="index.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i></a></li>
               </ul>
             
           </div>
       </div>
-      <div class="col-md-10"style="background-image: url('service.jpg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
+      <div class="col-md-10"style="background-image: url('images/image-asset.jpeg'); background-repeat: no-repeat; width: 100%; height: 700px; background-size: 100%;">
        
           
         <div class="main_content">
@@ -59,13 +60,35 @@
                   <h2><center>Book Service</center></h2><br>
               <div class="form-group">
                   <label for="user_id"><span class="glyphicon glyphicon-user"></span><b>User Id</b></label>
-                  <!-- <% 
-                        Dao bd=new Dao();
-                        
-                        bid=bd.autoIncr();
-                      %>  -->
-                  <input type="text" class="form-control" name="user_id"value=<%=bid%> readonly >
+                  <% 
+           String sbid;
+           HttpSession sess = request.getSession(false); //use false to use the existing session
+            sbid=(String)sess.getAttribute("user");
+           //sbid=request.getParameter("txtUname");
+           if(sbid!=null)
+           {
+                 
+                 Dao sd=new Dao();
+                 S=sd.searchByUser(sbid);
+                 if(S==null)
+                   out.println("<font color=red size=6 >Record not found........</font>");
+                else
+               {
+               %>
+              <br>
+                  <input type="text" class="form-control" name="user_id"value=<%=S.getId()%> readonly >
                 </div>
+                   <%   
+               }     
+           }
+           
+           
+   %>      
+                   <div class="form-group">
+                  <label for="name"><span class="glyphicon glyphicon-user"></span><b>Name</b></label>
+                  <input type="text" class="form-control" name="name" placeholder="Full Name" >
+                </div>
+                  
                 <div class="form-group">
                   <label for="mobile"><span class="glyphicon glyphicon-user"></span><b>Mobile No</b></label>
                   <input type="text" class="form-control" name="phoneno" placeholder="Enter 10 digit no"  pattern="[789][0-9]{9}">
@@ -73,18 +96,18 @@
                 <label for="service"><span class="glyphicon glyphicon-list-alt"></span><b>Select Service</b></label>
           <select id="service" name="service_id" class="form-control">
             <option >Select Service</option>
-             <!-- <%
+             <%
                     Dao d = new Dao();
                     List <Service> ls= d.getAllServices();
                     for(Service c : ls ){
                         
                     
                     
-                    %> -->
+                    %>
                      <option value= "<%= c.getId() %>"><%= c.getService()%></option>
-        <!-- <%
+        <%
             }         
-%>       -->
+%>      
           </select><br>
                
                 
@@ -99,6 +122,32 @@
            <div class="form-group">
                   <label for="date"><span class="glyphicon glyphicon-lock"></span><b>Booking Date</b></label>
                   <input type="date" class="form-control" name="booking_date" >
+                </div>
+          
+          <div class="form-group">
+                  <label for="add"><span class="glyphicon glyphicon-user"></span><b>Address</b></label>
+                  <input type="text" class="form-control" name="add" placeholder="address" >
+                </div>
+          
+           <div class="form-group">
+                  <label for="city">City</label>
+                 
+                  <select id="city" name="city" class="form-control" id="exampleFormControlSelect" >
+                    <option>Select city</option>
+                     <%
+                    Dao da = new Dao();
+                    List <City> cit= d.getAllCities();
+                    for(City ci : cit ){
+                        
+                    
+                    
+                    %>
+                  <option value= "<%= ci.getId() %>"><%= ci.getName()%></option> 
+                   <%
+    }                      
+%>            
+                  </select>
+
                 </div>
                 <button type="submit" class="btn btn-block btn-danger" style="background-color:#032255; border:rgb(14, 30, 63)">Book Service</button><br>
               </form>
@@ -152,4 +201,15 @@
   </div>
   </body> 
   </html>
-  
+  <% 
+    String id=null;
+    id=request.getParameter("user_id");
+    
+    if(id!=null)
+    session.setAttribute("user_id", id);
+            
+                 
+         
+                 
+        
+%>
