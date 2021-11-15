@@ -1,9 +1,15 @@
+<%@page import="Model.User"%>
+<%@page import="Dao.Dao"%>
+<%!
+
+ User S=null;
+ %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  
 <title>Service Provider</title>
-<link rel="stylesheet" href="us.css">
+<link rel="stylesheet" href="css/us.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -15,8 +21,24 @@
 </head>
 <body>
   <div class="container-fluid ">
+       <% 
+           String sbid;
+           HttpSession sess = request.getSession(false); //use false to use the existing session
+            sbid=(String)sess.getAttribute("user");
+           //sbid=request.getParameter("txtUname");
+           if(sbid!=null)
+           {
+                 
+                 Dao sd=new Dao();
+                 S=sd.searchByUser(sbid);
+                 if(S==null)
+                   out.println("<font color=red size=6 >Record not found........</font>");
+                else
+               {
+                 int id = S.getId();  
+               %>
     <div class="header"><b>SERVICE PROVIDER</b>
-      <p style="font-size:20px; margin-left:1000px; margin-bottom:-15px">ID:</p>
+      <p style="font-size:20px; margin-left:1300px; margin-bottom:-15px">ID: <%out.print(id); %></p>
     </div>
   </div>
 <div class="row no-gutters" >
@@ -26,40 +48,44 @@
         <div class="sidebar">
      <br><br>
             <ul>
-              <li><a href="service provider.html"> <i class="fa fa-home" style="font-size:20px">&nbsp; &nbsp;Home</i> </a></li>
-              <li><a href="service.html"><i class="fa fa-eye" style="font-size:20px">&nbsp;&nbsp;See Service Requests</i></a></li>
-              <li><a href="accept.html"><i class="fa fa-check-square-o" style="font-size:20px;">&nbsp;&nbsp;Accepted Requests</i> </a></li>
-              <li><a href="decline.html"><i class="fa fa-close" style="font-size:20px">&nbsp;&nbsp;Declined Requests</i> </a></li>
-              <li><a href="pending.html"><i class="fa fa-eye-slash" style="font-size:20px">&nbsp;&nbsp;Pending Requests</i> </a></li>
+              <li><a href="ServiceHome.jsp"> <i class="fa fa-home" style="font-size:20px">&nbsp; &nbsp;Home</i> </a></li>
+              <li><a href="seeservice.jsp"><i class="fa fa-eye" style="font-size:20px">&nbsp;&nbsp;See Service Requests</i></a></li>
+              <li><a href="acceptRequest.jsp"><i class="fa fa-check-square-o" style="font-size:20px;">&nbsp;&nbsp;Accepted Requests</i> </a></li>
+              
+              <li><a href="pendingRequest.jsp"><i class="fa fa-eye-slash" style="font-size:20px">&nbsp;&nbsp;Pending Requests</i> </a></li>
+              <li><a href="addservice.jsp"><i class="fa fa-check-square-o" style="font-size:20px;">&nbsp;&nbsp;Add Service</i> </a></li>
               <li><a href="contact.html"><i class="fa fa-phone" style="font-size:20px">&nbsp;&nbsp;Contact</i> </a></li>
-              <li><a href="login.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i> </a></li>
+              <li><a href="index.html"><i class="fa fa-sign-out" style="font-size:20px">&nbsp;&nbsp;Logout</i> </a></li>
             </ul>
          
         </div>
     </div>
-    <div class="col-md-10"style="background-image: url('service.jpg'); background-possition: center;  background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%;  ">
+    <div class="col-md-10"style="background-image: url('images/service.jpg'); background-possition: center;  background-repeat: no-repeat; width: 100%; height: 650px; background-size: 100%;  ">
       <div class="main_content">
        
         <div class="info">
-          <!-- <h1 style="font-size: 100px; margin-top: 100px; margin-left:200px; margin-right: 50px;"><strong>WELCOME!</strong></h1><br><br> -->
-          <!-- <h2 style="font-size: 20px; margin-left:50px; margin-right: 50px; color:rgb(6, 42, 97)"><center><strong>Thank you for logging to the website. We are greatful to have you as our member. As a service provider we hope that you will provide better and convenient services to the customer and here we wish that you have a great journey ahead with us.</strong></center></h2> -->
+          
           <br>
-          <strong>      <center>    <strong> <p style="font-size:40px; color:navy">Welcome!</p></strong></center>
+          <strong>      <center>    <strong> <p style="font-size:40px; color:navy;text-shadow: 1.5px 1.5px #525d85">Welcome!</p></strong></center>
             <br>
-             <p style="font-size:25px; margin-left:350px; color:navy">Id: <%=S.getId()%></p>
-  <p style="font-size:25px; margin-left:350px;color:navy">Name: <%=S.getName()%></p>
-  <p style="font-size:25px; margin-left:350px;color:navy">Address:  <%=S.getAdd()%></p>
-    <p style="font-size:25px; margin-left:350px;color:navy">City: <%=S.getCity()%></p>
-      <p style="font-size:25px; margin-left:350px;color:navy">State: <%=S.getState()%></p>
-        <p style="font-size:25px; margin-left:350px;color:navy">Email: <%=S.getEmail()%></p>
-          <p style="font-size:25px; margin-left:350px; color:navy">Contact: <%=S.getPhoneno()%></p></strong>
+            <p style="font-size:25px; margin-left:550px; color:navy;text-shadow: 2px 2px white">Id: <%=S.getId()%></p>
+            <p style="font-size:25px; margin-left:550px;color:navy;text-shadow: 2px 2px white">Name: <%=S.getName()%></p>
+            <p style="font-size:25px; margin-left:550px;color:navy;text-shadow: 2px 2px white">Address:  <%=S.getAdd()%></p>
+            <p style="font-size:25px; margin-left:550px;color:navy;text-shadow: 2px 2px white">City: <%=S.getCityname()%></p>
+            <p style="font-size:25px; margin-left:550px;color:navy;text-shadow: 2px 2px white">State: <%=S.getStatename()%></p>
+            <p style="font-size:25px; margin-left:550px;color:navy;text-shadow: 2px 2px white">Email: <%=S.getEmail()%></p>
+            <p style="font-size:25px; margin-left:550px; color:navy;text-shadow: 2px 2px white">Contact: <%=S.getPhoneno()%></p></strong>
        
 </div>
 </div>
 
   </div>
 </div>
-</div>
+ <%   
+                    
+           }
+           }
+   %>      
 <div class="footer " style="width: 100%;">
 
   <div class="row ">
